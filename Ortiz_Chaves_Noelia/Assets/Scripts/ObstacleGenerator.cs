@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class ObstacleGenerator : MonoBehaviour
 {
     [SerializeField] GameObject Obstaculo;
-
-    //Variable que tiene la posición del objeto de referencia
     [SerializeField] Transform InitPos;
+    [SerializeField] Text Tiempo;
+    [SerializeField] Text ContadorEsferas;
+   
+    public int nEsferas;
+    private float tiempo = 0;
+    private float segundos = 0;
 
-    //Variables para generar columnas de forma random
     private float randomNumber;
     Vector3 RandomPos;
     // Start is called before the first frame update
@@ -30,7 +33,7 @@ public class ObstacleGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UIText();
     }
 
     
@@ -39,7 +42,7 @@ public class ObstacleGenerator : MonoBehaviour
     {
         float randomX = Random.Range(-198f, 198f);
         float randomZ = Random.Range(-94f, 94f);
-        float randomY = Random.Range(130f, 8f);
+        float randomY = Random.Range(28f, 8f);
 
         Vector3 RndmPos = new Vector3(randomX, randomY, randomZ);
         Instantiate(Obstaculo, RndmPos, Quaternion.identity);
@@ -62,9 +65,18 @@ public class ObstacleGenerator : MonoBehaviour
             CrearEsfera();
             yield return new WaitForSeconds(0.5f);
         }
+        
     }
 
-    
+    void UIText()
+    {
+        nEsferas = contador;
 
-    
+        tiempo += Time.deltaTime;
+        segundos = tiempo % 60;
+        ContadorEsferas.text = "Nº de columnas: " + nEsferas;
+        Tiempo.text = "Tiempo jugado: " + segundos.ToString("f1") + " segs";
+    }
+
+
 }

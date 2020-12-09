@@ -29,13 +29,7 @@ public class NaveMove : MonoBehaviour
         float DesplX = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * speed * DesplX);
 
-        if (posZ < 9.5f && posZ > -9.5f || posZ < -9.5f && desplZ > 0 || posZ > 9.5f && desplZ < 0)
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * desplZ);
-        }
-
-
-
+     
 
 
     }

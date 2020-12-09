@@ -33,7 +33,8 @@ public class NaveMove : MonoBehaviour
         float DesplX = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * speed * DesplX);
 
-       
+        
+        
 
     }
      public void UIAlerta()

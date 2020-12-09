@@ -15,11 +15,16 @@ public class ObstacleGenerator : MonoBehaviour
     Vector3 RandomPos;
     // Start is called before the first frame update
     float distanciaSep = 6f;
-    
-    
+    int contador;
+
     void Start()
     {
-        IniciarEsfera();
+        StartCoroutine("InstanciadorCoroutine");
+        for (int n = 1; n <= 20; n++)
+        {
+            //Creamos cada columna, con la separación establecida
+            CrearEsfera();
+        }
     }
 
     // Update is called once per frame
@@ -30,33 +35,36 @@ public class ObstacleGenerator : MonoBehaviour
 
     
     
-    void CrearEsfera(float posZ)
+    private void CrearEsfera( )
     {
-        randomNumber = Random.Range(0f, 14f);
-        RandomPos = new Vector3(randomNumber, 0, posZ);
-        //print(RandomPos);
-        Vector3 FinalPos = InitPos.position + RandomPos;
-        Instantiate(Obstaculo, FinalPos, Quaternion.identity);
+        float randomX = Random.Range(-198f, 198f);
+        float randomZ = Random.Range(-94f, 94f);
+        float randomY = Random.Range(130f, 8f);
+
+        Vector3 RndmPos = new Vector3(randomX, randomY, randomZ);
+        Instantiate(Obstaculo, RndmPos, Quaternion.identity);
     }
 
-    IEnumerator InstanciadorColumnas()
+    IEnumerator InstanciadorCoroutine()
     {
-        //Bucle infinito (poner esto es lo mismo que while(true){}
-        for (; ; )
+        for (contador = 1; contador <= 5; contador++)
         {
-            CrearEsfera(0);
-            yield return new WaitForSeconds(1f);
+            CrearEsfera();
+            yield return new WaitForSeconds(2);
         }
-
-    }
-
-
-    void IniciarEsfera()
-    {
-        for (int n = 1; n <= 20; n++)
+        for (contador = 6; contador <= 10 && contador > 5; contador++)
         {
-            //Creamos cada columna, con la separación establecida
-            CrearEsfera(-n * distanciaSep);
+            CrearEsfera();
+            yield return new WaitForSeconds(1);
+        }
+        for (contador = 11; contador > 10; contador++)
+        {
+            CrearEsfera();
+            yield return new WaitForSeconds(0.5f);
         }
     }
+
+    
+
+    
 }

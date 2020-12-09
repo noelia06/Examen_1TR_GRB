@@ -74,7 +74,7 @@ public class ObstacleGenerator : MonoBehaviour
 
         tiempo += Time.deltaTime;
         segundos = tiempo % 60;
-        ContadorEsferas.text = "Nº de columnas: " + nEsferas;
+        ContadorEsferas.text = "Nº de esferas: " + nEsferas;
         Tiempo.text = "Tiempo jugado: " + segundos.ToString("f1") + " segs";
     }
 

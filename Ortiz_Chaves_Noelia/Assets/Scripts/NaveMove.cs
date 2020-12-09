@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NaveMove : MonoBehaviour
 {
     public float speed;
-    
+    [SerializeField] Text Alerta;
+    float posX = transform.position.x;
+    float posZ = transform.position.z;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +24,7 @@ public class NaveMove : MonoBehaviour
 
     void MoverNave()
     {
-        float posX = transform.position.x;
-        float posZ = transform.position.z;
+        
       
         float DesplZ = Input.GetAxis("Vertical");
         transform.Translate(Vector3.forward * Time.deltaTime * speed * DesplZ);
@@ -33,4 +36,12 @@ public class NaveMove : MonoBehaviour
 
 
     }
+    void UIAlerta()
+    {
+        if(posX<198f && -198f>posX || posZ<94f && -94f > posZ)
+        {
+           
+        }
+    }
 }
+

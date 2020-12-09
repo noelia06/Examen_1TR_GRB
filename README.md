@@ -1,2 +1,2 @@
-# Examen_1TR_GR
-Examen Práctico Grupo B
+# Examen 1ª EV - Grupo B
+Examen Práctico de Desarrollo de Entornos Interactivos. Grupo B
